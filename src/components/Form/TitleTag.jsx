@@ -13,6 +13,7 @@ const TitleTag = ({ title, index, updateItem, removeItem }) => {
     };
 
     const setUpdate = () => {
+        setNewTitle(title)
         setUpdateField(true)
     }
 
