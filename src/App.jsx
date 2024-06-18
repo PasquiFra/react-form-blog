@@ -16,7 +16,7 @@ function App() {
         <Form setError={setError}></Form>
       </main>
       <Footer />
-      {/* <Alert error={error}></Alert> */}
+      <Alert error={error}></Alert>
 
     </>
   )

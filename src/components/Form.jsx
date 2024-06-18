@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { IoTrashBinOutline } from "react-icons/io5";
+import './formStyle.scss'
 
 const Form = ({ setError }) => {
 
@@ -17,8 +19,11 @@ const Form = ({ setError }) => {
         catch (err) {
             setError(err.message)
         }
-
         setTitleValue('')
+    }
+
+    const removeItem = (index) => {
+        setTitles(titoli => titoli.filter((t, i) => i !== index))
     }
 
     return (
@@ -38,7 +43,12 @@ const Form = ({ setError }) => {
                 <ul>
                     {
                         titles.map((title, index) => {
-                            return <li key={`${title}-${index}`}>{title}</li>
+                            return (
+                                <li key={`${title}-${index}`}>
+                                    {title}
+                                    <IoTrashBinOutline className="trashIcon ms-3" type="button" onClick={() => removeItem(index)} />
+                                </li>
+                            )
                         })
                     }
                 </ul>

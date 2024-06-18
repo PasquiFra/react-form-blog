@@ -8,4 +8,12 @@
 
     background-color: rgba(0, 0, 0, 0.842);
     color: white;
+
+    h3 {
+        text-align: center;
+    }
+
+    &.close {
+        display: none;
+    }
 }
