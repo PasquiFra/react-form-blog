@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { IoTrashBinOutline } from "react-icons/io5";
+
+import TitleTag from './TitleTag'
 import './formStyle.scss'
 
 const Form = ({ setError }) => {
@@ -25,6 +26,11 @@ const Form = ({ setError }) => {
     const removeItem = (index) => {
         setTitles(titoli => titoli.filter((t, i) => i !== index))
     }
+    const updateItem = (index, newTitle) => {
+        setTitles(titoli => titoli.map((t, i) => {
+            return index == i ? newTitle : t
+        }))
+    }
 
     return (
         <>
@@ -44,10 +50,12 @@ const Form = ({ setError }) => {
                     {
                         titles.map((title, index) => {
                             return (
-                                <li key={`${title}-${index}`}>
-                                    {title}
-                                    <IoTrashBinOutline className="trashIcon ms-3" type="button" onClick={() => removeItem(index)} />
-                                </li>
+                                <TitleTag
+                                    key={`${title}-${index}`}
+                                    title={title} index={index}
+                                    updateItem={updateItem}
+                                    removeItem={removeItem}
+                                />
                             )
                         })
                     }
